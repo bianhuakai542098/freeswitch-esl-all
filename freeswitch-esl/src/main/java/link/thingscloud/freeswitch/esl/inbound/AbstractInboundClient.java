@@ -57,7 +57,7 @@ abstract class AbstractInboundClient extends AbstractNettyInboundClient implemen
     private final ScheduledThreadPoolExecutor scheduledPoolExecutor = new ScheduledThreadPoolExecutor(1,
             new DefaultThreadFactory("scheduled-pool", true));
 
-    private final Map<String, InboundChannelHandler> handlerTable = new HashMap<>(32);
+    private final Map<String, InboundChannelHandler> handlerTable = new ConcurrentHashMap<>(32);
 
     AbstractInboundClient(InboundClientOption option) {
         super(option);
